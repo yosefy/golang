@@ -1,8 +1,19 @@
-FROM golang
+From centos:7
 
-RUN apt-get update 
-RUN apt-get install software-properties-common -y
+MAINTAINER "UshioShugo" <ushio.s@gmail.com>
 
-RUN apt-add-repository ppa:libreoffice/ppa
-RUN apt-get update
-RUN apt-get install -y libreoffice --no-install-recommends
+
+ENV GOROOT=/usr/local/go
+ENV GOPATH=/opt/go
+ENV PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+#ENV GOVERSION=$GO_VER
+ENV GOVERSION=1.10.1
+
+
+RUN yum -y update && yum -y upgrade && \
+    yum -y install epel-release && \
+    yum -y install wget git sudo bzip2 tmux gcc openssl
+
+WORKDIR /tmp
+RUN curl https://storage.googleapis.com/golang/go$GOVERSION.linux-amd64.tar.gz | tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz
+RUN go version
