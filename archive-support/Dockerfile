@@ -15,5 +15,5 @@ RUN yum -y update && yum -y upgrade && \
     yum -y install wget git sudo bzip2 tmux gcc openssl
 
 WORKDIR /tmp
-RUN curl https://dl.google.com/go/go$GOVERSION.linux-amd64.tar.gz | tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz
+RUN curl https://dl.google.com/go/go$GOVERSION.linux-amd64.tar.gz | tar -C /usr/local -xzf go$GOVERSION.linux-amd64.tar.gz
 RUN go version
