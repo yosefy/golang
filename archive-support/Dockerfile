@@ -7,7 +7,7 @@ ENV GOROOT=/usr/local/go
 ENV GOPATH=/opt/go
 ENV PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 #ENV GOVERSION=$GO_VER
-ENV GOVERSION=1.10.1
+ENV GOVERSION=1.10.2
 
 
 RUN yum -y update && yum -y upgrade && \
