@@ -1,25 +1,23 @@
 From centos:7
 
-MAINTAINER "UshioShugo" <ushio.s@gmail.com>
+MAINTAINER "yosefy" <yosef.yudilevich@gmail.com>
 
 
 ENV GOROOT=/usr/local/go
 ENV GOPATH=/opt/go
-ENV PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-#ENV GOVERSION=$GO_VER
+ENV PATH=$PATH:$GOROOT/bin:$GOPATH/bin:/opt/libreoffice6.0/program
 ENV GOVERSION=1.10.2
-
+ENV OFFICE_VER=6.0.4
 
 RUN yum -y update && yum -y upgrade && \
     yum -y install epel-release && \
-    yum -y install wget git sudo bzip2 tmux gcc openssl
+    yum -y install wget git sudo bzip2 tmux gcc openssl cairo cups java-1.8.0-openjdk
 
 WORKDIR /tmp
 RUN curl https://dl.google.com/go/go$GOVERSION.linux-amd64.tar.gz | tar -xzf - -C /usr/local
 RUN go version
 
 RUN yum remove openoffice* libreoffice*
-RUN wget http://download.documentfoundation.org/libreoffice/stable/6.0.0/rpm/x86_64/LibreOffice_6.0.0_Linux_x86-64_rpm.tar.gz
+RUN curl -L https://download.documentfoundation.org/libreoffice/stable/${OFFICE_VER}/rpm/x86_64/LibreOffice_${OFFICE_VER}_Linux_x86-64_rpm.tar.gz | tar -xzf -
 
-RUN tar -xvf LibreOffice_6.0.0_Linux_x86-64_rpm.tar.gz
-RUN cd /tmp/LibreOffice_6.0.0.3_Linux_x86_rpm/RPMS/ && yum localinstall *.rpm
+RUN cd LibreOffice_${OFFICE_VER}.2_Linux_x86-64_rpm/RPMS && yum install -y *.rpm && soffice --version
