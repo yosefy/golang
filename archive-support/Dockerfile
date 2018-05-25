@@ -11,7 +11,9 @@ ENV OFFICE_VER=6.0.4
 
 RUN yum -y update && yum -y upgrade && \
     yum -y install epel-release && \
-    yum -y install wget git sudo bzip2 tmux gcc openssl cairo cups java-1.8.0-openjdk
+    yum -y install wget git sudo bzip2 tmux gcc openssl cairo cups java-1.8.0-openjdk python-pip
+    
+RUN pip install docx
 
 WORKDIR /tmp
 RUN curl https://dl.google.com/go/go$GOVERSION.linux-amd64.tar.gz | tar -xzf - -C /usr/local
