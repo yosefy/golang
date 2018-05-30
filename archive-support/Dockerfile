@@ -13,6 +13,9 @@ RUN yum -y update && yum -y upgrade && \
     yum -y install epel-release && \
     yum -y install wget git sudo bzip2 tmux gcc openssl cairo cups java-1.8.0-openjdk python-pip
     
+RUN yum -y install https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm
+RUN  yum -y install postgresql-client postgresql-contrib postgresql-devel
+    
 RUN pip install python-docx
 
 WORKDIR /tmp
