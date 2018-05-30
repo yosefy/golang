@@ -4,7 +4,7 @@ MAINTAINER "yosefy" <yosef.yudilevich@gmail.com>
 
 
 ENV GOROOT=/usr/local/go
-ENV GOPATH=/opt/go
+#ENV GOPATH=/opt/go
 ENV PATH=$PATH:$GOROOT/bin:$GOPATH/bin:/opt/libreoffice6.0/program
 ENV GOVERSION=1.10.2
 ENV OFFICE_VER=6.0.4
